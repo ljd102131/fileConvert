@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.button{
+	background-color: #e7e7e7;
+	color: black;
+	border-radius: 8px;
+	padding: 10px 22px;
+	text-align: center;
+    font-size: 14px;
+}
+
+div{
+	margin:20px 20px 0px 50px;
+}
+
+li{
+	margin:5px;
+}
