@@ -49,7 +49,7 @@ public class fileConvertController{
 			filePath = filePath==null?"":URLDecoder.decode(filePath, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			//e.printStackTrace();;
 		}
 		String thefile = fileName==""||fileName==null?"test":fileName.substring(0, fileName.lastIndexOf("."));
 		String path = uploadController.buildTopicFilePath1(request)+"\\"+thefile;
@@ -87,7 +87,7 @@ public class fileConvertController{
 			filePath = filePath==null?"":URLDecoder.decode(filePath, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			//e.printStackTrace();;
 		}
 		String thefile = fileName==null?"test":fileName.substring(0, fileName.lastIndexOf("."));
 		String path = uploadController.buildTopicFilePath1(request)+"\\"+thefile;
@@ -127,7 +127,7 @@ public class fileConvertController{
 			ActiveXComponent axComponent = null;//声明ActiveX组件
 			Dispatch dispatch = null;//调度处理类，进行操作office
 			try {
-				ComThread.InitSTA();//释放COM组件线程
+				ComThread.InitSTA();//初始化com线程,初始化一个线程并放入内存中等待调用
 				axComponent = new ActiveXComponent("Word.Application");//打开word应用程序
 				axComponent.setProperty("Visible", false); //设置word不可见
 				Dispatch doc = axComponent.getProperty("Documents").toDispatch();//获得word中所有打开的文档,返回Documents对象
@@ -144,7 +144,7 @@ public class fileConvertController{
 				if (axComponent != null) {
 					axComponent.invoke("Quit", 0); //关闭word应用程序
 				}
-				ComThread.Release();
+				ComThread.Release();//释放占用的内存空间，因为com的线程回收不由java的垃圾回收器处理
 				convertResult = "true";
 			} 
 			/*Thread thread = new Thread(new Runnable() {
@@ -188,7 +188,7 @@ public class fileConvertController{
 					ImageIO.write(rImage, "png", file);
 				} catch (IOException e) {
 					// TODO 自动生成的 catch 块
-					e.printStackTrace();
+					//e.printStackTrace();;
 				}
 				bImage.flush();
 				document.dispose();
