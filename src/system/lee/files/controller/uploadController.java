@@ -104,7 +104,7 @@ public class uploadController {
 			filePathBase64 = URLEncoder.encode(filePath, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			//e.printStackTrace();;
 		}
 		return filePathBase64;
 	}
